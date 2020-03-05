@@ -1,0 +1,28 @@
+访问服务器
+http://localhost:9001/oauth/authorize?response_type=code&client_id=feifei
+
+http://localhost:9001/oauth/token
+
+grant_type         authorization_code
+username           hailong
+password           123456
+client_id          feifei
+client_secret      123456
+code               M12XT3
+
+
+{
+  "access_token": "9a316c32-a5ac-4e2e-87f1-a02de3e9b6b9",
+  "token_type": "bearer",
+  "refresh_token": "a67683ee-c7ef-4061-b159-4ac7ca228de5",
+  "expires_in": 43199,
+  "scope": "read write"
+}
+
+在资源服务器携带token访问
+http://localhost:9002/product/findAll?access_token=9a316c32-a5ac-4e2e-87f1-a02de3e9b6b9
+
+
+spring-boot-security-server 是认证服务    （如头条）
+
+spring-boot-serurity-source 是资源服务器  （如微信)

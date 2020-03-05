@@ -1,0 +1,2 @@
+访问服务器
+http://localhost:9001/oauth/authorize?response_type=code&client_id=feifei

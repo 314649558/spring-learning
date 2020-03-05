@@ -1,0 +1,22 @@
+insert into oauth_client_details
+(
+client_id,
+resource_ids,
+client_secret,
+scope,
+authorized_grant_types,
+web_server_redirect_uri,
+authorities,
+access_token_validity,
+refresh_token_validity,
+additional_information,
+autoapprove
+)
+values
+(
+'feifei',
+'product_api',
+'$2a$10$ZnijnFGAeyFnXGlWOcsq1eYmETbPRjugtzofAbivRU2HQfPfM/Rea',
+'read,write',
+'client_credentials,implicit,authorization_code,refresh_token,password',
+'http://www.baidu.com',,,,,'false');

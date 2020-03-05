@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hailong.spring.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.hailong.spring.domain.SysRole">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+    <resultMap id="UserWithRoles" type="org.javaboy.vhr.model.Hr" extends="BaseResultMap">
+        <collection property="roles" ofType="com.hailong.spring.domain.SysRole">
+            <id column="id" property="id"/>
+            <result column="role_name" property="roleName"/>
+            <result column="role_DESC" property="roleDesc"/>
+        </collection>
+    </resultMap>
+    <select id="findByUserName" resultMap="UserWithRoles">
+        select ur.uid,u.username,u.password,u.status,
+               ur.rid,r.role_name,r.role_desc
+        from sys_user u , sys_user_role ur , sys_role r
+        where u.id=ur.UID
+          and ur.RID=r.ID
+          and u.username=#{username}
+    </select>
+</mapper>
